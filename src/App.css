@@ -1,112 +1,46 @@
-.navbar{
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background-color: #333;
+/*****************/
+/* Standard Tags */
+/*****************/
+
+body {
+  background-color: rgb(225, 225, 225);
+}
+
+/*******************/
+/* Post Container */
+/*******************/
+
+.post-container {
+  background-color: white;
+  width: 500px;
+  border: 1px solid rgb(205, 205, 205);
+  border-radius: 1em;
+  margin: 1em auto;
+}
+
+.post-image {
+  width: 500px;
+  height: 500px;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
   overflow: hidden;
+  object-fit: cover;
+}
+
+.post-info-container {
+  padding: 1em;
+}
+
+.likes-container {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  margin: 0;
-}
-ul{
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #333;
-  display: flex;
-  justify-content: end;
-}
-li{
-  float: left;
-  align-self: center;
-  margin-right: .5em;
 }
 
-#logo {
-  margin-left: 1em;
+.likes-container > * {
+  margin-right: 1em;
+  user-select: none;
 }
 
-li a{
-  justify-self: end;
-  color: white;
-  text-align: center;
-  margin: .5em .25em .5em .5em;
-  text-decoration: none;
-}
-li a:hover{
-  background-color: #111;
-} 
-
-
-/* 
-.navbar {
-  overflow: hidden;
-  background-color: #333;
-  position: relative;
-}
-
-.navbar #myLinks {
-  display: none;
-}
-
-.navbar a {
-  color: white;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
-  display: block;
-}
-
-.navbar a.icon {
-  background: black;
-  display: block;
-  position: absolute;
-  right: 0;
-  top: 0;
-}
-
-.navbar a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.active {
-  background-color: #04AA6D;
-  color: white;
-} */
-
-.gg-home {
-  background:
-      linear-gradient(to left,
-          currentColor 5px,transparent 0)
-          no-repeat 0 bottom/4px 2px,
-      linear-gradient(to left,
-          currentColor 5px,transparent 0)
-          no-repeat right bottom/4px 2px;
-  box-sizing: border-box;
-  position: relative;
-  display: block;
-  transform: scale(var(--ggs,1));
-  width: 18px;
-  height: 14px;
-  border: 2px solid;
-  border-top: 0;
-  border-bottom: 0;
-  border-top-right-radius: 3px;
-  border-top-left-radius: 3px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
-  margin-bottom: -2px
-}
-.gg-add-r {
-  box-sizing: border-box;
-  position: relative;
-  display: block;
-  width: 22px;
-  height: 22px;
-  border: 2px solid;
-  transform: scale(var(--ggs,1));
-  border-radius: 4px
+.like-button {
+  cursor: pointer;
 }
