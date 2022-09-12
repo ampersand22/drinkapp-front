@@ -9,11 +9,15 @@ import { useState } from 'react';
 ///////////////////
 
 const Post = (props) => {
-    const commentsArray = props.drink.comments.split(', ');
+    // Variable Declaration
+    let commentsArray = props.drink.comments.split(', ');
 
+    // States Declaration
     const [likeColor, setLikeColor] = useState(" gray ");
     const [likeFill, setLikeFill] = useState("evenodd");
+    const [newComment, setNewComment] = useState('');
 
+    // Function to Handle Toggling Like Button
     const handleLikeToggle = () => {
         if (likeColor === " red ") {
             setLikeColor(" gray ");
@@ -44,9 +48,14 @@ const Post = (props) => {
             }
             props.handleUpdateComment(newDrink);
         }
-        
     }
 
+    // Function to Handle Comment Change
+    const handleNewComment = (event) => {
+        setNewComment(event.target.value);
+    }
+
+    // Function to Handle Submitting Comment
     const handleCommentSubmit = (event) => {
         event.preventDefault();
         const newDrink = {
@@ -60,8 +69,26 @@ const Post = (props) => {
             tags: props.drink.tags
         }
         props.handleUpdateComment(newDrink);
+        setNewComment('');
     }
 
+    // Function to Handle Deleting Comment
+    const handleCommentDelete = (event) => {
+        commentsArray.splice(commentsArray.indexOf(event.target.value), 1);
+        const newDrink = {
+            id: props.drink.id,
+            name: props.drink.name,
+            image: props.drink.image,
+            ingredients: props.drink.ingredients,
+            comments: commentsArray.join(', '),
+            likes: props.drink.likes,
+            location: props.drink.location,
+            tags: props.drink.tags
+        }
+        props.handleUpdateComment(newDrink);
+    }
+
+    // Return HTML Elements
     return (
         <div className='post-container'>
             <img className='post-image' src={props.drink.image} />
@@ -94,14 +121,14 @@ const Post = (props) => {
                         return (
                             <div className='comment-container' key={i}>
                                 <p>{comment}</p>
-                                <button>X</button>
+                                <button value={comment} onClick={handleCommentDelete}>X</button>
                             </div>
                             
                         )
                     })
                 }
                 <form onSubmit={handleCommentSubmit}>
-                    <input type="text" defaultValue={""} name="comment" placeholder='Type comment here...' />
+                    <input type="text" value={newComment} onChange={handleNewComment} name="comment" placeholder='Type comment here...' />
                     <input className='submit-button' value='Add Comment' type="submit"/>
                 </form>
             </div>

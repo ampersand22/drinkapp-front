@@ -38,7 +38,7 @@ function App() {
     .catch((error) => console.error(error));
   };
 
-  // POST Request and Update Drinks State
+  // PUT Request and Update Drinks Comment State
   const handleUpdateComment = (editDrink) => {
     axios.put('http://localhost:8000/api/drinks/' + editDrink.id, editDrink)
     .then((response)=> {
