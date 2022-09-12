@@ -1,3 +1,6 @@
+/*****************/
+/*     Navbar    */
+/*****************/
 .navbar{
   background-color: rgb(255, 255, 255);
   top: 0;
@@ -23,7 +26,56 @@ h2{
 .icon-color path{
   color: rgb(0, 0, 0);
 }
+/*****************/
+/*     Edit      */
+/*****************/
 
 .edit-content{
   margin-top: 5em;
+  
+/*****************/
+/* Standard Tags */
+/*****************/
+
+body {
+  background-color: rgb(225, 225, 225);
+}
+
+/*******************/
+/* Post Container */
+/*******************/
+
+.post-container {
+  background-color: white;
+  width: 500px;
+  border: 1px solid rgb(205, 205, 205);
+  border-radius: 1em;
+  margin: 1em auto;
+}
+
+.post-image {
+  width: 500px;
+  height: 500px;
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+  overflow: hidden;
+  object-fit: cover;
+}
+
+.post-info-container {
+  padding: 1em;
+}
+
+.likes-container {
+  display: flex;
+  align-items: center;
+}
+
+.likes-container > * {
+  margin-right: 1em;
+  user-select: none;
+}
+
+.like-button {
+  cursor: pointer;
 }
