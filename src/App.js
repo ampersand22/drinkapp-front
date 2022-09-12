@@ -7,9 +7,7 @@ import Edit from './components/Edit'
 function App() {
   return (
     <div className="App">
-      
-      <h1>Drinks</h1>
-      <Navbar/>
+      <Navbar/>      
       <Edit/>
 
     </div>
