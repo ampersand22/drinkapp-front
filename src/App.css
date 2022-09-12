@@ -33,8 +33,14 @@ body {
 
 .likes-container {
   display: flex;
+  align-items: center;
 }
 
 .likes-container > * {
   margin-right: 1em;
+  user-select: none;
+}
+
+.like-button {
+  cursor: pointer;
 }
