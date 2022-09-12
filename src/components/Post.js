@@ -115,19 +115,19 @@ const Post = (props) => {
                 <h3>{props.drink.name}</h3>
                 <h4>Ingredients</h4>
                 <p>{props.drink.ingredients}</p>
-                <h4>Comments</h4>
+                <h4 className='comments-title'>Comments</h4>
                 {
                     commentsArray.map((comment, i) => {
                         return (
                             <div className='comment-container' key={i}>
                                 <p>{comment}</p>
-                                <button value={comment} onClick={handleCommentDelete}>X</button>
+                                <button className='delete-comment-button' value={comment} onClick={handleCommentDelete}>x</button>
                             </div>
                             
                         )
                     })
                 }
-                <form onSubmit={handleCommentSubmit}>
+                <form className='add-comment-form' onSubmit={handleCommentSubmit}>
                     <input type="text" value={newComment} onChange={handleNewComment} name="comment" placeholder='Type comment here...' />
                     <input className='submit-button' value='Add Comment' type="submit"/>
                 </form>

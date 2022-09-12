@@ -3,7 +3,7 @@
 /*****************/
 
 body {
-  background-color: rgb(225, 225, 225);
+  background-color: rgb(245, 245, 245);
 }
 
 /*******************/
@@ -13,9 +13,9 @@ body {
 .post-container {
   background-color: white;
   width: 500px;
-  border: 1px solid rgb(205, 205, 205);
   border-radius: 1em;
-  margin: 1em auto;
+  margin: 1em auto 2em auto;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
 }
 
 .post-image {
@@ -28,12 +28,13 @@ body {
 }
 
 .post-info-container {
-  padding: 1em;
+  padding: 1em 1.5em;
 }
 
 .likes-container {
   display: flex;
   align-items: center;
+  height: 30px;
 }
 
 .likes-container > * {
@@ -45,16 +46,51 @@ body {
   cursor: pointer;
 }
 
+.comments-title {
+  margin-bottom: .5em;
+}
+
 .comment-container {
+  padding: 0 .5em;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
 .comment-container:hover {
-  background-color: rgb(235, 235, 235);
+  background-color: rgb(245, 245, 245);
 }
 
 .comment-container > p {
-  margin-top: 0;
+  margin: .5em 0 .5em 0;
+}
+
+.delete-comment-button {
+  background-color: rgb(180, 180, 180);
+  color: white;
+  font-weight: 500;
+  font-size: 1em;
+  width: 25px;
+  height: 25px;;
+  padding: .1em .5em .2em .5em;
+  border-style: none;
+  border-radius: 200px;
+  cursor: pointer;
+}
+
+.delete-comment-button:hover {
+  background-color: rgb(160, 160, 160);
+}
+
+.add-comment-form {
+  margin-top: .75em;
+  margin-bottom: .5em;
+}
+
+.add-comment-form > input {
+  width: 76%;
+}
+
+.submit-button {
+  width: 22% !important;
 }
