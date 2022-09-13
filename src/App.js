@@ -11,8 +11,8 @@ import axios from 'axios';
 ////////////////
 
 import Post from './components/Post';
-import Login from './components/Login'
 import Navbar from './components/Navbar'
+import Edit from './components/Edit'
 
 //////////////////
 // APP FUNCTION //
@@ -40,7 +40,7 @@ function App() {
     .catch((error) => console.error(error));
   };
 
-  // POST Request and Update Drinks State
+  // PUT Request and Update Drinks Comment State
   const handleUpdateComment = (editDrink) => {
     axios.put('http://localhost:8000/api/drinks/' + editDrink.id, editDrink)
     .then((response)=> {
@@ -60,9 +60,8 @@ function App() {
 
   return (
     <div className="App">
-      
-      <h1>Drinks</h1>
-      <Login />
+      <Navbar/>      
+      <Edit/>
 
       <div className='posts-container'>
         {
