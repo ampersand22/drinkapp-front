@@ -15,12 +15,13 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 import Post from './components/Post';
 import Navbar from './components/Navbar'
 import Edit from './components/Edit'
+import Add from './components/Add';
 
 //////////////////
 // APP FUNCTION //
 //////////////////
 
-function App() {
+const App = () => {
 
   ////////////
   // STATES //
@@ -42,6 +43,14 @@ function App() {
     .catch((error) => console.error(error));
   };
 
+  // POST Request and Update Drinks State
+  const handleCreate = (newDrink) => {
+    axios.post('http://localhost:8000/api/drinks', newDrink)
+    .then((response) => {
+      setDrinks([...drinks, response.data])
+    });
+  };
+
   // PUT Request and Update Drinks Comment State
   const handleUpdateComment = (editDrink) => {
     axios.put('http://localhost:8000/api/drinks/' + editDrink.id, editDrink)
@@ -51,6 +60,7 @@ function App() {
       }))
     })
   }
+
   //PUT Request and Update Drinks State
   const handleUpdate = (editDrink) => {
     axios.put('http://localhost:8000/api/drinks/' + editDrink.id, editDrink)
@@ -60,6 +70,7 @@ function App() {
       }))
     })
   }
+
   //DELETE Request and Update Drinks State
   const handleDelete = (deletedDrink) => {
     confirmAlert({
@@ -81,6 +92,7 @@ function App() {
     ]
     })   
   }
+
   ////////////////
   // USE EFFECT //
   ////////////////
@@ -91,7 +103,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar/>
+      <Navbar handleCreate={handleCreate} />
       <div className='posts-container'>
         {
           drinks.map((drink) => {
