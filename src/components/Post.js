@@ -187,8 +187,8 @@ const Post = (props) => {
                     <p>{props.drink.likes} Likes</p>
                 </div>
                 <h3 className='post-name'>{props.drink.name}</h3>
-                <h4>Ingredients</h4>
-                <p>{props.drink.ingredients}</p>
+                <h4 className='ingredients-title'>Ingredients</h4>
+                <p className='ingredients-list'>{props.drink.ingredients}</p>
             <h4 className='comments-title' onClick={handleCommentToggle}>{commentsHeader}</h4>
                 {
                     showComments ?
