@@ -16,6 +16,7 @@ import Post from './components/Post';
 import Navbar from './components/Navbar'
 import Edit from './components/Edit'
 import Add from './components/Add';
+import Login from './components/Login'
 
 //////////////////
 // APP FUNCTION //
@@ -104,6 +105,7 @@ const App = () => {
   return (
     <div className="App">
       <Navbar handleCreate={handleCreate} />
+      <Login />
       <div className='posts-container'>
         {
           drinks.map((drink) => {
