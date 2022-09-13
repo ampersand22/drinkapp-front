@@ -38,7 +38,7 @@ h2{
 /*****************/
 
 body {
-  background-color: rgb(225, 225, 225);
+  background-color: rgb(245, 245, 245);
 }
 
 /*******************/
@@ -48,27 +48,54 @@ body {
 .post-container {
   background-color: white;
   width: 500px;
-  border: 1px solid rgb(205, 205, 205);
   border-radius: 1em;
-  margin: 1em auto;
+  margin: 1em auto 2em auto;
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+}
+
+.post-header {
+  width: 100%;
+  height: 55px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.post-header > * {
+  padding: 0 1em;
+}
+
+.location-p {
+  color: rgb(45, 45, 45);
+  font-size: .9em;
+  margin-left: .6em;
+}
+
+.post-location-container {
+  height: 55px;
+  display: flex;
+  align-items: center;
+}
+
+.clickable-svg {
+  cursor: pointer;
 }
 
 .post-image {
   width: 500px;
   height: 500px;
-  border-top-left-radius: 1em;
-  border-top-right-radius: 1em;
   overflow: hidden;
   object-fit: cover;
 }
 
 .post-info-container {
-  padding: 1em;
+  padding: 1em 1.5em;
 }
 
 .likes-container {
   display: flex;
   align-items: center;
+  height: 30px;
 }
 
 .likes-container > * {
@@ -78,4 +105,58 @@ body {
 
 .like-button {
   cursor: pointer;
+}
+
+.comments-title {
+  margin-bottom: .5em;
+  cursor: pointer;
+}
+
+.comments-title:hover {
+  color: rgb(40, 40, 40);
+}
+
+.comment-container {
+  padding: 0 .5em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment-container:hover {
+  background-color: rgb(245, 245, 245);
+}
+
+.comment-container > p {
+  margin: .5em 0 .5em 0;
+}
+
+.delete-comment-button {
+  background-color: rgb(180, 180, 180);
+  color: white;
+  font-weight: 500;
+  font-size: 1em;
+  width: 22px;
+  height: 22px;
+  padding: .01em 0 .12em 0;
+  border-style: none;
+  border-radius: 200px;
+  cursor: pointer;
+}
+
+.delete-comment-button:hover {
+  background-color: rgb(160, 160, 160);
+}
+
+.add-comment-form {
+  margin-top: .75em;
+  margin-bottom: .5em;
+}
+
+.add-comment-form > input {
+  width: 76%;
+}
+
+.submit-button {
+  width: 22% !important;
 }
