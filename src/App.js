@@ -11,6 +11,8 @@ import axios from 'axios';
 ////////////////
 
 import Post from './components/Post';
+import Login from './components/Login'
+import Navbar from './components/Navbar'
 
 //////////////////
 // APP FUNCTION //
@@ -60,6 +62,7 @@ function App() {
     <div className="App">
       
       <h1>Drinks</h1>
+      <Login />
 
       <div className='posts-container'>
         {
