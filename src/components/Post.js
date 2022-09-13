@@ -3,6 +3,8 @@
 /////////////
 
 import { useState } from 'react';
+import { confirmAlert } from 'react-confirm-alert'
+import 'react-confirm-alert/src/react-confirm-alert.css';
 
 ///////////////////
 // POST FUNCTION //
@@ -98,6 +100,24 @@ const Post = (props) => {
         props.handleUpdateComment(newDrink);
     }
 
+    //Function for Dropdown Menu on Post
+    const dropdownFunction = () => {
+        document.getElementById(`dropdown${props.drink.id}`).classList.toggle('show');      
+    }
+    //Closes Dropdown Menu when user clicks outside of menu
+    window.onclick = function(event) {
+        if (!event.target.matches('.clickable-svg')) {
+          var dropdowns = document.getElementsByClassName("dropdown-content");
+          var i;
+          for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains('show')) {
+              openDropdown.classList.remove('show');
+            }
+          }
+        }
+      }
+      
     // Function to Handle Toggling Comment Section
     const handleCommentToggle = (event) => {
         if (showComments) {
@@ -109,7 +129,7 @@ const Post = (props) => {
             setCommentsHeader('Comments');
         }
     }
-
+    
     // Return HTML Elements
     return (
         <div className='post-container'>
@@ -137,7 +157,9 @@ const Post = (props) => {
                     </svg>
                     <h5 className='location-p'>{props.drink.location}</h5>
                 </div>
+                <div className='dropdown-div'>
                 <svg
+                onClick={dropdownFunction}
                 className='clickable-svg'
                 width="24"
                 height="24"
@@ -164,8 +186,13 @@ const Post = (props) => {
                     fill=" gray "
                 />
                 </svg>
+                <div id={'dropdown'+ props.drink.id} className='dropdown-content'>
+                    <p >Edit</p>
+                    <p onClick={() => {props.handleDelete(props.drink)}}>Delete</p>
+                </div>
+                </div>
             </div>
-            <img className='post-image' src={props.drink.image} />
+            <img className='post-image' src={props.drink.image} alt={props.drink.name}/>
             <div className='post-info-container'>
                 <div className='likes-container'>
                     <svg
