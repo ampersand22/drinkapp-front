@@ -17,7 +17,7 @@ import Navbar from './components/Navbar'
 import Edit from './components/Edit'
 import Login from './components/Login'
 
-//////////////////
+//////////////////npm
 // APP FUNCTION //
 //////////////////
 
