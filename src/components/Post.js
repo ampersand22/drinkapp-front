@@ -11,12 +11,21 @@ import { useState } from 'react';
 const Post = (props) => {
     // Variable Declaration
     let commentsArray = props.drink.comments.split(', ');
+    const tagsArray = props.drink.tags.split(', ');
+    let tagsString = '';
+
+    // Making String for Tags
+    for (let i = 0; i < tagsArray.length; i++) {
+        tagsArray[i] = '#' + tagsArray[i];
+    }
+    tagsString = tagsArray.join('  ');
 
     // States Declaration
     const [likeColor, setLikeColor] = useState(" gray ");
     const [likeFill, setLikeFill] = useState("evenodd");
     const [newComment, setNewComment] = useState('');
     const [showComments, setShowComments] = useState(false);
+    const [commentsHeader, setCommentsHeader] = useState('View ' + commentsArray.length + ' Comments');
 
     // Function to Handle Toggling Like Button
     const handleLikeToggle = () => {
@@ -87,6 +96,18 @@ const Post = (props) => {
             tags: props.drink.tags
         }
         props.handleUpdateComment(newDrink);
+    }
+
+    // Function to Handle Toggling Comment Section
+    const handleCommentToggle = (event) => {
+        if (showComments) {
+            setShowComments(false);
+            setCommentsHeader('View ' + commentsArray.length + ' Comments');
+        }
+        else {
+            setShowComments(true);
+            setCommentsHeader('Comments');
+        }
     }
 
     // Return HTML Elements
@@ -165,29 +186,46 @@ const Post = (props) => {
                     </svg>
                     <p>{props.drink.likes} Likes</p>
                 </div>
-                <h3>{props.drink.name}</h3>
-                <h4>Ingredients</h4>
-                <p>{props.drink.ingredients}</p>
-                <h4 className='comments-title' onClick={() => {setShowComments(!showComments)}}>Comments</h4>
+                <h3 className='post-name'>{props.drink.name}</h3>
+                <h4 className='ingredients-title'>Ingredients</h4>
+                <p className='ingredients-list'>{props.drink.ingredients}</p>
+            <h4 className='comments-title' onClick={handleCommentToggle}>{commentsHeader}</h4>
                 {
                     showComments ?
-                        commentsArray.map((comment, i) => {
-                            return (
-                                <>
+                        <>
+                            {commentsArray.map((comment, i) => {
+                                return (
                                     <div className='comment-container' key={i}>
                                         <p>{comment}</p>
                                         <button className='delete-comment-button' value={comment} onClick={handleCommentDelete}>x</button>
                                     </div>
-                                    <form className='add-comment-form' onSubmit={handleCommentSubmit}>
-                                        <input type="text" value={newComment} onChange={handleNewComment} name="comment" placeholder='Type comment here...' />
-                                        <input className='submit-button' value='Add Comment' type="submit"/>
-                                    </form>
-                                </>
-                            )
-                        })
+                                )
+                            })}
+                            <form className='add-comment-form' onSubmit={handleCommentSubmit}>
+                                <input type="text" value={newComment} onChange={handleNewComment} name="comment" placeholder='Type comment here...' />
+                                <button className='submit-comment-button' value='Add Comment' type="submit">
+                                    <svg
+                                        width="24"
+                                        height="24"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                        <path
+                                            d="M15.0378 6.34317L13.6269 7.76069L16.8972 11.0157L3.29211 11.0293L3.29413 13.0293L16.8619 13.0157L13.6467 16.2459L15.0643 17.6568L20.7079 11.9868L15.0378 6.34317Z"
+                                            fill="white"
+                                        />
+                                    </svg>
+                                </button>
+                            </form>
+                        </>
                     :
                         null
                 }
+            </div>
+            <div className='divider-line'></div>
+            <div className='tags-container'>
+                <p>{tagsString}</p>
             </div>
         </div>
     )
