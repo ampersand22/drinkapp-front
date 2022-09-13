@@ -15,6 +15,7 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 import Post from './components/Post';
 import Navbar from './components/Navbar'
 import Edit from './components/Edit'
+import Login from './components/Login'
 
 //////////////////
 // APP FUNCTION //
@@ -92,6 +93,7 @@ function App() {
   return (
     <div className="App">
       <Navbar/>
+      <Login />
       <div className='posts-container'>
         {
           drinks.map((drink) => {
