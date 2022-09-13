@@ -13,6 +13,7 @@ import axios from 'axios';
 import Post from './components/Post';
 import Navbar from './components/Navbar'
 import Edit from './components/Edit'
+import Login from './components/Login'
 
 //////////////////
 // APP FUNCTION //
@@ -61,6 +62,7 @@ function App() {
   return (
     <div className="App">
       <Navbar/>      
+      <Login />
       <Edit/>
 
       <div className='posts-container'>

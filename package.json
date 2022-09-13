@@ -7,10 +7,6 @@
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.27.2",
-<<<<<<< HEAD
-    "bcrypt": "^5.0.1",
-=======
->>>>>>> 15fd512f4bffa20bc2b6087562d6334060fb003e
     "css.gg": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
