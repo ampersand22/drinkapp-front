@@ -54,7 +54,7 @@ body {
 }
 
 .post-info-container {
-  padding: 1em 1.5em;
+  padding: 1em 1.5em 0 1.5em;
 }
 
 .likes-container {
@@ -64,7 +64,7 @@ body {
 }
 
 .likes-container > * {
-  margin-right: 1em;
+  margin-right: .75em;
   user-select: none;
 }
 
@@ -78,7 +78,7 @@ body {
 }
 
 .comments-title:hover {
-  color: rgb(40, 40, 40);
+  color: rgb(85, 85, 85);
 }
 
 .comment-container {
@@ -124,4 +124,23 @@ body {
 
 .submit-button {
   width: 22% !important;
+}
+
+.divider-line {
+  background-color: rgb(220, 220, 220);
+  width: 100%;
+  height: 1px;
+  margin-top: 1em;
+}
+
+.tags-container {
+  padding: 0 1.5em .2em 1.5em;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+}
+
+.tags-container > * {
+  color: rgb(95, 95, 95);
+  font-size: .95em;
+  margin: .55em 0;
 }

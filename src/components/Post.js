@@ -11,6 +11,14 @@ import { useState } from 'react';
 const Post = (props) => {
     // Variable Declaration
     let commentsArray = props.drink.comments.split(', ');
+    const tagsArray = props.drink.tags.split(', ');
+    let tagsString = '';
+
+    // Making String for Tags
+    for (let i = 0; i < tagsArray.length; i++) {
+        tagsArray[i] = '#' + tagsArray[i];
+    }
+    tagsString = tagsArray.join('  ');
 
     // States Declaration
     const [likeColor, setLikeColor] = useState(" gray ");
@@ -171,23 +179,27 @@ const Post = (props) => {
                 <h4 className='comments-title' onClick={() => {setShowComments(!showComments)}}>Comments</h4>
                 {
                     showComments ?
-                        commentsArray.map((comment, i) => {
-                            return (
-                                <>
+                        <>
+                            {commentsArray.map((comment, i) => {
+                                return (
                                     <div className='comment-container' key={i}>
                                         <p>{comment}</p>
                                         <button className='delete-comment-button' value={comment} onClick={handleCommentDelete}>x</button>
                                     </div>
-                                    <form className='add-comment-form' onSubmit={handleCommentSubmit}>
-                                        <input type="text" value={newComment} onChange={handleNewComment} name="comment" placeholder='Type comment here...' />
-                                        <input className='submit-button' value='Add Comment' type="submit"/>
-                                    </form>
-                                </>
-                            )
-                        })
+                                )
+                            })}
+                            <form className='add-comment-form' onSubmit={handleCommentSubmit}>
+                                <input type="text" value={newComment} onChange={handleNewComment} name="comment" placeholder='Type comment here...' />
+                                <input className='submit-button' value='Add Comment' type="submit"/>
+                            </form>
+                        </>
                     :
                         null
                 }
+            </div>
+            <div className='divider-line'></div>
+            <div className='tags-container'>
+                <p>{tagsString}</p>
             </div>
         </div>
     )
