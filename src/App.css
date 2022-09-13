@@ -1,3 +1,7 @@
+/****************/
+/* Font Imports */
+/****************/
+
 /*****************/
 /*     Navbar    */
 /*****************/
@@ -115,7 +119,7 @@ body {
   width: 500px;
   border-radius: 1em;
   margin: 1em auto 2em auto;
-  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.1);
 }
 
 .post-header {
@@ -154,7 +158,7 @@ body {
 }
 
 .post-info-container {
-  padding: 1em 1.5em;
+  padding: .78em 1.5em 0 1.5em;
 }
 
 .likes-container {
@@ -164,7 +168,7 @@ body {
 }
 
 .likes-container > * {
-  margin-right: 1em;
+  margin-right: .75em;
   user-select: none;
 }
 
@@ -172,13 +176,28 @@ body {
   cursor: pointer;
 }
 
-.comments-title {
+.post-name {
+  margin: .6em 0 .5em 0;
+}
+
+.ingredients-title {
+  margin-top: .95em;
   margin-bottom: .5em;
+}
+
+.ingredients-list {
+  margin: .75em .5em;
+}
+
+.comments-title {
+  margin-top: .8em;
+  margin-bottom: .5em;
+  user-select: none;
   cursor: pointer;
 }
 
 .comments-title:hover {
-  color: rgb(40, 40, 40);
+  color: rgb(85, 85, 85);
 }
 
 .comment-container {
@@ -214,14 +233,60 @@ body {
 }
 
 .add-comment-form {
-  margin-top: .75em;
+  height: 35px;
+  margin-top: .35em;
   margin-bottom: .5em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .add-comment-form > input {
-  width: 76%;
+  width: 87%;
+  height: 25px;
+  padding: .2em .75em;
+  border: 1px solid rgb(192, 192, 192);
+  border-right-style: none;
+  border-top-left-radius: .35em;
+  border-bottom-left-radius: .35em;
 }
 
-.submit-button {
-  width: 22% !important;
+.add-comment-form > input:focus {
+  outline: none;
+}
+
+.submit-comment-button {
+  background-color: rgb(102, 160, 241);
+  width: 32px;
+  height: 32px;
+  border-style: none;
+  border-top-right-radius: .35em;
+  border-bottom-right-radius: .35em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.submit-comment-button:hover {
+  background-color: rgb(75, 139, 230);
+}
+
+.divider-line {
+  background-color: rgb(220, 220, 220);
+  width: 100%;
+  height: 1px;
+  margin-top: 1.3em;
+}
+
+.tags-container {
+  padding: 0 1.5em .2em 1.5em;
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+}
+
+.tags-container > * {
+  color: rgb(95, 95, 95);
+  font-size: .95em;
+  margin: .55em 0;
 }
