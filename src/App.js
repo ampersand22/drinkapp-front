@@ -93,6 +93,7 @@ function App() {
   return (
     <div className="App">
       <Navbar/>
+      <Login />
       <div className='posts-container'>
         {
           drinks.map((drink) => {
