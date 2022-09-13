@@ -3,6 +3,41 @@
 /****************/
 
 /*****************/
+/*     Navbar    */
+/*****************/
+.navbar{
+  background-color: rgb(255, 255, 255);
+  top: 0;
+  width: 100%;
+  position: fixed;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 1em rgb(221, 221, 221);
+}
+h2{
+  margin: 0;
+}
+.logo{
+  width: 50%;
+}
+.icons{
+  width: 50%;
+  text-align: right;
+}
+.icons a{
+  margin: 0 .75em;
+}
+.icon-color path{
+  color: rgb(0, 0, 0);
+}
+/*****************/
+/*     Edit      */
+/*****************/
+
+.edit-content{
+  margin-top: 5em;
+}
+/*****************/
 /* Standard Tags */
 /*****************/
 
