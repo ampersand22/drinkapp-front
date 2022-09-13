@@ -25,6 +25,7 @@ const Post = (props) => {
     const [likeFill, setLikeFill] = useState("evenodd");
     const [newComment, setNewComment] = useState('');
     const [showComments, setShowComments] = useState(false);
+    const [commentsHeader, setCommentsHeader] = useState('View ' + commentsArray.length + ' Comments');
 
     // Function to Handle Toggling Like Button
     const handleLikeToggle = () => {
@@ -95,6 +96,18 @@ const Post = (props) => {
             tags: props.drink.tags
         }
         props.handleUpdateComment(newDrink);
+    }
+
+    // Function to Handle Toggling Comment Section
+    const handleCommentToggle = (event) => {
+        if (showComments) {
+            setShowComments(false);
+            setCommentsHeader('View ' + commentsArray.length + ' Comments');
+        }
+        else {
+            setShowComments(true);
+            setCommentsHeader('Comments');
+        }
     }
 
     // Return HTML Elements
@@ -176,7 +189,7 @@ const Post = (props) => {
                 <h3 className='post-name'>{props.drink.name}</h3>
                 <h4>Ingredients</h4>
                 <p>{props.drink.ingredients}</p>
-                <h4 className='comments-title' onClick={() => {setShowComments(!showComments)}}>Comments</h4>
+            <h4 className='comments-title' onClick={handleCommentToggle}>{commentsHeader}</h4>
                 {
                     showComments ?
                         <>
