@@ -3,6 +3,7 @@
 /*****************/
 .navbar{
   background-color: rgb(255, 255, 255);
+  z-index: 2;
   top: 0;
   width: 100%;
   position: fixed;
@@ -33,6 +34,20 @@ h2{
 .edit-content{
   margin-top: 5em;
 }
+.edit-menu{
+  position: absolute;
+  z-index: 1;
+  top: 1%;
+  left: 93%;
+  color: white;
+}
+.close-edit{
+  position: absolute;
+  z-index: 1;
+  top: 1%;
+  left: 93%;
+  color: black;
+}
 /*****************/
 /* Standard Tags */
 /*****************/
@@ -44,8 +59,12 @@ body {
 /*******************/
 /* Post Container */
 /*******************/
+.posts-container{
+  margin-top: 50px;
+}
 
 .post-container {
+  position: relative;
   background-color: white;
   width: 500px;
   border: 1px solid rgb(205, 205, 205);

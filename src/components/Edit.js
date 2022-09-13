@@ -9,14 +9,10 @@ const Edit = (props) => {
   const handleSubmit = (event) => {
     event.preventDefault()
     props.handleUpdate(drink)
+    props.handleEditDisplay()
   }
   return (
-    <>
-      <details className='edit-content'>
-        <summary className="edit"
-            style={{ cursor: "pointer", color: "blue" }}>
-                Edit Drink
-        </summary>
+    <>      
         <form onSubmit={handleSubmit}>
             <label htmlFor="name">Name: </label>
             <input type="text" name="name" value={drink.name} onChange={handleChange}/>
@@ -41,7 +37,6 @@ const Edit = (props) => {
             <br /><br />
           <input type="submit" />
         </form>
-      </details>
     </>
   )
 }

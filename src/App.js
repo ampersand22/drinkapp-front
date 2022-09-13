@@ -50,6 +50,14 @@ function App() {
     })
   }
 
+  const handleUpdate = (editDrink) => {
+    axios.put('http://localhost:8000/api/drinks/' + editDrink.id, editDrink)
+    .then((response) => {
+      setDrinks(drinks.map((character) => {
+        return character.id !== editDrink.id ? character : editDrink
+      }))
+    })
+  }
   ////////////////
   // USE EFFECT //
   ////////////////
@@ -60,14 +68,12 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar/>      
-      <Edit/>
-
+      <Navbar/>
       <div className='posts-container'>
         {
           drinks.map((drink) => {
             return (
-              <Post drink={drink} handleUpdateComment={handleUpdateComment} key={drink.id} />
+              <Post drink={drink} handleUpdateComment={handleUpdateComment} handleUpdate={handleUpdate} key={drink.id} />
             )
           })
         }
