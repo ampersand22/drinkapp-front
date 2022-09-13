@@ -57,7 +57,7 @@ function App() {
     if(searchInput.length > 0) {
       setIsSearching(true)
       const result = drinks.filter((drink)=> {
-        return drink.name.toLowerCase().match(searchInput) || drink.ingredients.toLowerCase().match(searchInput)
+        return drink.name.toLowerCase().match(searchInput) || drink.ingredients.toLowerCase().match(searchInput) || drink.tags.toLowerCase().match(searchInput)
       })
       setFilteredDrinks(result);
     } else {
