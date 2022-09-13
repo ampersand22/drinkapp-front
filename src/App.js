@@ -6,11 +6,13 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+
 ////////////////
 // COMPONENTS //
 ////////////////
 
 import Post from './components/Post';
+import SearchBar from './components/SearchBar';
 
 //////////////////
 // APP FUNCTION //
@@ -23,6 +25,8 @@ function App() {
   ////////////
 
   const [drinks, setDrinks] = useState([]);
+  const [filteredDrinks, setFilteredDrinks] = useState([])
+  const [isSearching, setIsSearching] = useState(false);
 
   /////////////////////
   // AXIOS FUNCTIONS //
@@ -48,6 +52,19 @@ function App() {
     })
   }
 
+  const onSearchChange = (searchInput) => {
+    console.log("butternut:", searchInput);
+    if(searchInput.length > 0) {
+      setIsSearching(true)
+      const result = drinks.filter((drink)=> {
+        return drink.name.toLowerCase().match(searchInput) || drink.ingredients.toLowerCase().match(searchInput) || drink.tags.toLowerCase().match(searchInput)
+      })
+      setFilteredDrinks(result);
+    } else {
+      setIsSearching(false)
+    }
+  }
+
   ////////////////
   // USE EFFECT //
   ////////////////
@@ -56,18 +73,29 @@ function App() {
     getDrinks();
   }, []);
 
+  const NoSearchResults = () => 
+  {
+    return(
+      <><p className="noResults">No Drinks to Display</p></>
+    )
+  }
+
+  const drinksToDisplay = isSearching ? filteredDrinks : drinks
   return (
     <div className="App">
       
       <h1>Drinks</h1>
-
+      <SearchBar onSearchChange={onSearchChange} />
       <div className='posts-container'>
         {
-          drinks.map((drink) => {
+          drinksToDisplay.length > 0 ?
+          drinksToDisplay.map((drink) => {
             return (
+              <>
               <Post drink={drink} handleUpdateComment={handleUpdateComment} key={drink.id} />
+              </>
             )
-          })
+          }) : <NoSearchResults/>
         }
       </div>
 
