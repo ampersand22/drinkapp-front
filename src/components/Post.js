@@ -19,7 +19,7 @@ const Post = (props) => {
 
     // Make Comment Title Variable
     if (commentsArray.length === 1 && commentsArray[0] === 'placeholder') {
-        commentsTitle = "View Comments";
+        commentsTitle = "View 0 Comments";
     } else {
         commentsTitle = 'View ' + commentsArray.length + ' Comments';
     }
@@ -133,7 +133,11 @@ const Post = (props) => {
     const handleCommentToggle = (event) => {
         if (showComments) {
             setShowComments(false);
-            setCommentsHeader('View ' + commentsArray.length + ' Comments');
+            if (commentsArray[0] === 'placeholder') {
+                setCommentsHeader('View ' + (commentsArray.length - 1) + ' Comments');
+            } else {
+                setCommentsHeader('View ' + commentsArray.length + ' Comments');
+            }
         }
         else {
             setShowComments(true);
