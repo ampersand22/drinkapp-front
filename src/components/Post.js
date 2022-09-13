@@ -5,6 +5,8 @@
 import { useState } from 'react';
 import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import Map from '../components/Map';
+import ReactModal from 'react-modal';
 
 ///////////////////
 // POST FUNCTION //
@@ -28,6 +30,8 @@ const Post = (props) => {
     const [newComment, setNewComment] = useState('');
     const [showComments, setShowComments] = useState(false);
     const [commentsHeader, setCommentsHeader] = useState('View ' + commentsArray.length + ' Comments');
+    const [showMap, setShowMap] = useState(false)
+   
 
     // Function to Handle Toggling Like Button
     const handleLikeToggle = () => {
@@ -155,7 +159,10 @@ const Post = (props) => {
                         fill=" gray "
                     />
                     </svg>
-                    <h5 className='location-p'>{props.drink.location}</h5>
+                    <a href='#' ><h5 className='location-p' onClick={()=> {
+                       setShowMap(!showMap)
+                    }}>{props.drink.location}</h5></a>
+                    <Map isVisible={showMap} setShowMap={setShowMap}/>
                 </div>
                 <div className='dropdown-div'>
                 <svg

@@ -290,3 +290,7 @@ body {
   font-size: .95em;
   margin: .55em 0;
 }
+/* Map Modal */
+.exitMapModal {
+  float: right;
+}
