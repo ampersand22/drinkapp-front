@@ -44,3 +44,9 @@ body {
 .like-button {
   cursor: pointer;
 }
+.noResults {
+  text-align: center;
+  font-weight: 400;
+  font-size: 50px;
+  
+}
