@@ -17,7 +17,7 @@ const Add = (props) => {
         name: '',
         image: '',
         ingredients: '',
-        comments: 'placeholder',
+        comments: 'Placeholder123',
         likes: 0,
         location: '',
         tags: ''
