@@ -39,26 +39,26 @@ const Edit = (props) => {
         props.handleUpdate(drink)
         setEditAlert(false)
     }
+    
+    // function preventScroll(e){
+    //     e.preventDefault();
+    //     e.stopPropagation();
 
-    function preventScroll(e){
-        e.preventDefault();
-        e.stopPropagation();
-
-        return false;
-    }
-    const disable = (e) => {
-        document.querySelector('.App').addEventListener('wheel', preventScroll);
-    }
+    //     return false;
+    // }
+    // const disable = (e) => {
+    //     document.querySelector('.App').addEventListener('wheel', preventScroll);
+    // }
   
-    const enable = (e) =>{
-        document.querySelector('.App').removeEventListener('wheel', preventScroll);
-    }
-    const disablePrevent = () => {
-        document.querySelector('#prevent').addEventListener('click', disable);
-    }
-    const enablePrevent = () => {
-        document.querySelector('#allow').addEventListener('click', enable);
-    }
+    // const enable = (e) =>{
+    //     document.querySelector('.App').removeEventListener('wheel', preventScroll);
+    // }
+    // const disablePrevent = () => {
+    //     document.querySelector('#prevent').addEventListener('click', disable);
+    // }
+    // const enablePrevent = () => {
+    //     document.querySelector('#allow').addEventListener('click', enable);
+    // }
     
   return (
     <>
