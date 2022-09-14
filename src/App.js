@@ -29,6 +29,7 @@ const App = () => {
   ////////////
 
   const [drinks, setDrinks] = useState([]);
+  const [currentUser, setCurrentUser] = useState({})
 
   /////////////////////
   // AXIOS FUNCTIONS //
@@ -104,13 +105,12 @@ const App = () => {
 
   return (
     <div className="App">
-      <Navbar handleCreate={handleCreate} />
-      <Login />
+      <Navbar handleCreate={handleCreate} currentUser={currentUser} setCurrentUser={setCurrentUser} />
       <div className='posts-container'>
         {
           drinks.map((drink) => {
             return (
-              <Post drink={drink} handleUpdateComment={handleUpdateComment} handleUpdate={handleUpdate} handleDelete={handleDelete} key={drink.id} />
+              <Post drink={drink} handleUpdateComment={handleUpdateComment} handleUpdate={handleUpdate} handleDelete={handleDelete} key={drink.id} currentUser={currentUser} setCurrentUser={setCurrentUser} />
             )
           })
         }
