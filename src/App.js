@@ -17,6 +17,7 @@ import Navbar from './components/Navbar'
 import Edit from './components/Edit'
 import Add from './components/Add';
 import Login from './components/Login'
+import Footer from './components/Footer'
 
 //////////////////
 // APP FUNCTION //
@@ -103,7 +104,7 @@ const App = () => {
   }, []);
 
   return (
-    <div className="App">
+    <>
       <Navbar handleCreate={handleCreate} />
       <Login />
       <div className='posts-container'>
@@ -115,8 +116,8 @@ const App = () => {
           })
         }
       </div>
-
-    </div>
+      <Footer />
+    </>
   );
 }
 
