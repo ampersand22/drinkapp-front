@@ -158,7 +158,7 @@ const Post = (props) => {
                     </svg>
                     <h5 className='location-p'>{props.drink.location}</h5>
                 </div>
-                <Edit drink={props.drink} handleUpdate={props.handleUpdate}/>
+                <Edit drink={props.drink} handleUpdate={props.handleUpdate} handleDelete={props.handleDelete}/>
             </div>
             <img className='post-image' src={props.drink.image} alt={props.drink.name}/>
             <div className='post-info-container'>
