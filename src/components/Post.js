@@ -18,14 +18,14 @@ const Post = (props) => {
     let commentsTitle = '';
 
     // Make Comment Title Variable
-    if (commentsArray.length === 1 && commentsArray[0] === 'placeholder') {
+    if (commentsArray.length === 1 && commentsArray[0] === 'Placeholder123') {
         commentsTitle = "View 0 Comments";
     } else {
         commentsTitle = 'View ' + commentsArray.length + ' Comments';
     }
 
     // Making String for Tags
-    if (tagsArray[0] === "placeholder") {
+    if (tagsArray[0] === "Placeholder123") {
         tagsArray.remove(tagsArray[0]);
     }
     for (let i = 0; i < tagsArray.length; i++) {
@@ -133,7 +133,7 @@ const Post = (props) => {
     const handleCommentToggle = (event) => {
         if (showComments) {
             setShowComments(false);
-            if (commentsArray[0] === 'placeholder') {
+            if (commentsArray[0] === 'Placeholder123') {
                 setCommentsHeader('View ' + (commentsArray.length - 1) + ' Comments');
             } else {
                 setCommentsHeader('View ' + commentsArray.length + ' Comments');
@@ -237,7 +237,7 @@ const Post = (props) => {
                         <>
                             {commentsArray.map((comment, i) => {
                                 return(
-                                    (comment === 'placeholder') ?
+                                    (comment === 'Placeholder123') ?
                                         null
                                     :
                                         <div className='comment-container' key={i}>
