@@ -77,7 +77,7 @@ const App = () => {
   const handleDelete = (deletedDrink) => {
     confirmAlert({
       title: 'Confirm Deletion',
-      message: `Are you sure you want to delete ${deletedDrink.name}?`,
+      message: `Are you sure you want to delete this post?`,
       buttons:[{
         label: 'Yes',
         onClick:() =>{
