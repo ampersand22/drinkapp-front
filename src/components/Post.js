@@ -15,8 +15,19 @@ const Post = (props) => {
     let commentsArray = props.drink.comments.split(', ');
     const tagsArray = props.drink.tags.split(', ');
     let tagsString = '';
+    let commentsTitle = '';
+
+    // Make Comment Title Variable
+    if (commentsArray.length === 1 && commentsArray[0] === 'placeholder') {
+        commentsTitle = "View 0 Comments";
+    } else {
+        commentsTitle = 'View ' + commentsArray.length + ' Comments';
+    }
 
     // Making String for Tags
+    if (tagsArray[0] === "placeholder") {
+        tagsArray.remove(tagsArray[0]);
+    }
     for (let i = 0; i < tagsArray.length; i++) {
         tagsArray[i] = '#' + tagsArray[i];
     }
@@ -27,7 +38,7 @@ const Post = (props) => {
     const [likeFill, setLikeFill] = useState("evenodd");
     const [newComment, setNewComment] = useState('');
     const [showComments, setShowComments] = useState(false);
-    const [commentsHeader, setCommentsHeader] = useState('View ' + commentsArray.length + ' Comments');
+    const [commentsHeader, setCommentsHeader] = useState(commentsTitle);
 
     // Function to Handle Toggling Like Button
     const handleLikeToggle = () => {
@@ -122,7 +133,11 @@ const Post = (props) => {
     const handleCommentToggle = (event) => {
         if (showComments) {
             setShowComments(false);
-            setCommentsHeader('View ' + commentsArray.length + ' Comments');
+            if (commentsArray[0] === 'placeholder') {
+                setCommentsHeader('View ' + (commentsArray.length - 1) + ' Comments');
+            } else {
+                setCommentsHeader('View ' + commentsArray.length + ' Comments');
+            }
         }
         else {
             setShowComments(true);
@@ -221,8 +236,11 @@ const Post = (props) => {
                     showComments ?
                         <>
                             {commentsArray.map((comment, i) => {
-                                return (
-                                    <div className='comment-container' key={i}>
+                                return(
+                                    (comment === 'placeholder') ?
+                                        null
+                                    :
+                                        <div className='comment-container' key={i}>
                                         <p>{comment}</p>
                                         <button className='delete-comment-button' value={comment} onClick={handleCommentDelete}>
                                             <svg
@@ -238,7 +256,7 @@ const Post = (props) => {
                                                 />
                                             </svg>
                                         </button>
-                                    </div>
+                                        </div>
                                 )
                             })}
                             <form className='add-comment-form' onSubmit={handleCommentSubmit}>

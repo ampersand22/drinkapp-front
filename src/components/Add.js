@@ -17,7 +17,7 @@ const Add = (props) => {
         name: '',
         image: '',
         ingredients: '',
-        comments: '',
+        comments: 'placeholder',
         likes: 0,
         location: '',
         tags: ''
@@ -46,8 +46,9 @@ const Add = (props) => {
     // Function to Handle Submitting Add Form
     const handleAddFormSubmit = (event, onClose) => {
         event.preventDefault();
+        console.log(drink);
+        props.handleCreate(drink);
         setShowAlert(false);
-        // props.handleCreate(newDrink);
     }
 
     // Function to Create Alert with Add Form
