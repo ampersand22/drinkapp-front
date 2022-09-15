@@ -50,9 +50,9 @@ const App = () => {
   // POST Request and Update Drinks State
   const handleCreate = (newDrink) => {
     axios.post('http://localhost:8000/api/drinks', newDrink)
-      .then((response) => {
-        setDrinks([...drinks, response.data])
-      });
+    .then((response) => {
+      getDrinks();
+    });
   };
 
   // PUT Request and Update Drinks Comment State
