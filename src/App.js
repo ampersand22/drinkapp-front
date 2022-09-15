@@ -8,6 +8,7 @@ import axios from 'axios';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 
+
 ////////////////
 // COMPONENTS //
 ////////////////
@@ -100,10 +101,10 @@ const App = () => {
 
   const onSearchChange = (searchInput) => {
     console.log("butternut:", searchInput);
-    if (searchInput.length > 0) {
+    if(searchInput.length > 0) {
       setIsSearching(true)
-      const result = drinks.filter((drink) => {
-        return drink.name.toLowerCase().match(searchInput) || drink.ingredients.toLowerCase().match(searchInput)
+      const result = drinks.filter((drink)=> {
+        return drink.name.toLowerCase().match(searchInput) || drink.ingredients.toLowerCase().match(searchInput) || drink.tags.toLowerCase().match(searchInput)
       })
       setFilteredDrinks(result);
     } else {
@@ -119,6 +120,7 @@ const App = () => {
 
   const drinksToDisplay = isSearching ? filteredDrinks : drinks
 
+
   ////////////////
   // USE EFFECT //
   ////////////////
@@ -127,6 +129,7 @@ const App = () => {
     getDrinks();
   }, []);
 
+  const drinksToDisplay = isSearching ? filteredDrinks : drinks
   return (
     <>
       <Navbar handleCreate={handleCreate} onSearchChange={onSearchChange} />
