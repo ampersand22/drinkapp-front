@@ -46,14 +46,24 @@ const Map = ({ isVisible, setShowMap, drink }) => {
             {
                 "content": {
 
-                    // "width": "90%"
+                   backgroundColor: "rgb(255,255,255)",
+                   display: "flex",
+                   flexDirection: "column",
+                   top: '20rem',
+                   paddingTop: '3px',
+                   left: '50%',
+                   right: 'auto',
+                   bottom: 'auto',
+                   width: '33rem',
+                   transform: 'translate(-53%, -10%)',
+    
                 }
             }
         } isOpen={isVisible}>
             <button className="exitMapModal" onClick={() => {
                 setShowMap(false)
             }}>X</button>
-            <div style={{ "height": 500, "width": 500 }}>
+            <div style={{ "height": 500, "width": "33rem" }}>
                 <GoogleMapReact
                     bootstrapURLKeys={{
                         key: process.env.REACT_APP_NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
