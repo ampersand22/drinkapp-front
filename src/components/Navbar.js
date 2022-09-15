@@ -1,12 +1,16 @@
 import React from 'react';
 import Add from './Add';
 import '../App.css';
+import SearchBar from './UpdatedSearchBar';
 
 const Navbar = (props) => {
   return (
     <div className='navbar'>
         <div className='logo'>
         <img src='/wastd-logo.png' height='40'/>
+        </div>
+        <div>
+          <SearchBar />
         </div>
         <div className='icons'>
         <a href='/'>
