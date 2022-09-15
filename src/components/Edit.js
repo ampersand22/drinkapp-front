@@ -39,7 +39,7 @@ const Edit = (props) => {
         props.handleUpdate(drink)
         setEditAlert(false)
     }
-    
+
     // function preventScroll(e){
     //     e.preventDefault();
     //     e.stopPropagation();
