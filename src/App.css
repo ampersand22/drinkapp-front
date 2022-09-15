@@ -253,6 +253,11 @@ body {
   margin-left: .6em;
 }
 
+.location-p > a {
+  color: rgb(144, 52, 149);
+  text-decoration: none;
+}
+
 .post-location-container {
   height: 55px;
   display: flex;

@@ -49,7 +49,7 @@ const App = () => {
   const handleCreate = (newDrink) => {
     axios.post('http://localhost:8000/api/drinks', newDrink)
     .then((response) => {
-      setDrinks([...drinks, response.data])
+      getDrinks();
     });
   };
 
