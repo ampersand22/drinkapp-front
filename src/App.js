@@ -129,7 +129,6 @@ const App = () => {
     getDrinks();
   }, []);
 
-  const drinksToDisplay = isSearching ? filteredDrinks : drinks
   return (
     <>
       <Navbar handleCreate={handleCreate} onSearchChange={onSearchChange} />
