@@ -451,3 +451,10 @@ footer > h5 {
   transform: translate(-10px, 0px);
 }
 
+/* search bar */
+.noResults {
+  text-align: center;
+  font-weight: 400;
+  font-size: 50px;
+}
+
