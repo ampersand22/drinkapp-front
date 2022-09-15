@@ -4,13 +4,16 @@ import '../App.css';
 import SearchBar from './UpdatedSearchBar';
 
 const Navbar = (props) => {
+
+  
+
   return (
     <div className='navbar'>
         <div className='logo'>
         <img src='/wastd-logo.png' height='40'/>
         </div>
         <div>
-          <SearchBar />
+          <SearchBar onSearchChange={props.onSearchChange} />
         </div>
         <div className='icons'>
         <a href='/'>
