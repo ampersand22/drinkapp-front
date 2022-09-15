@@ -40,7 +40,7 @@ const App = () => {
 
   // GET Request and Update Drinks State
   const getDrinks = () => {
-    axios.get('http://localhost:8000/api/drinks')
+    axios.get('https://stark-sea-90395.herokuapp.com/api/drinks')
       .then(
         (response) => setDrinks(response.data),
         (error) => console.error(error)
@@ -50,7 +50,7 @@ const App = () => {
 
   // POST Request and Update Drinks State
   const handleCreate = (newDrink) => {
-    axios.post('http://localhost:8000/api/drinks', newDrink)
+    axios.post('https://stark-sea-90395.herokuapp.com/api/drinks', newDrink)
     .then((response) => {
       getDrinks();
     });
@@ -58,7 +58,7 @@ const App = () => {
 
   // PUT Request and Update Drinks Comment State
   const handleUpdateComment = (editDrink) => {
-    axios.put('http://localhost:8000/api/drinks/' + editDrink.id, editDrink)
+    axios.put('https://stark-sea-90395.herokuapp.com/api/drinks' + editDrink.id, editDrink)
       .then((response) => {
         setDrinks(drinks.map((drink) => {
           return drink.id !== editDrink.id ? drink : editDrink
@@ -68,7 +68,7 @@ const App = () => {
 
   //PUT Request and Update Drinks State
   const handleUpdate = (editDrink) => {
-    axios.put('http://localhost:8000/api/drinks/' + editDrink.id, editDrink)
+    axios.put('https://stark-sea-90395.herokuapp.com/api/drinks' + editDrink.id, editDrink)
       .then((response) => {
         setDrinks(drinks.map((drink) => {
           return drink.id !== editDrink.id ? drink : editDrink
@@ -85,7 +85,7 @@ const App = () => {
         label: 'Yes',
         onClick: () => {
           axios
-            .delete('http://localhost:8000/api/drinks/' + deletedDrink.id)
+            .delete('https://stark-sea-90395.herokuapp.com/api/drinks' + deletedDrink.id)
             .then((response) => {
               setDrinks(drinks.filter(drinks => drinks.id !== deletedDrink.id))
             })
