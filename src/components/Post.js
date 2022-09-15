@@ -5,8 +5,13 @@
 import { useState } from 'react';
 import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css';
+
 import Map from '../components/Map';
 
+
+
+import Edit from './Edit'
+import '../App.css'
 
 
 ///////////////////
@@ -21,14 +26,14 @@ const Post = (props) => {
     let commentsTitle = '';
 
     // Make Comment Title Variable
-    if (commentsArray.length === 1 && commentsArray[0] === 'placeholder') {
+    if (commentsArray.length === 1 && commentsArray[0] === 'Placeholder123') {
         commentsTitle = "View 0 Comments";
     } else {
         commentsTitle = 'View ' + commentsArray.length + ' Comments';
     }
 
     // Making String for Tags
-    if (tagsArray[0] === "placeholder") {
+    if (tagsArray[0] === "Placeholder123") {
         tagsArray.remove(tagsArray[0]);
     }
     for (let i = 0; i < tagsArray.length; i++) {
@@ -93,6 +98,7 @@ const Post = (props) => {
         props.handleUpdateComment(newDrink);
     }
 
+
     //Function for Dropdown Menu on Post
     const dropdownFunction = () => {
         document.getElementById(`dropdown${props.drink.id}`).classList.toggle('show');
@@ -111,11 +117,15 @@ const Post = (props) => {
         }
     }
 
+
+
+      
+
     // Function to Handle Toggling Comment Section
     const handleCommentToggle = (event) => {
         if (showComments) {
             setShowComments(false);
-            if (commentsArray[0] === 'placeholder') {
+            if (commentsArray[0] === 'Placeholder123') {
                 setCommentsHeader('View ' + (commentsArray.length - 1) + ' Comments');
             } else {
                 setCommentsHeader('View ' + commentsArray.length + ' Comments');
@@ -157,6 +167,7 @@ const Post = (props) => {
                     }}> {props.drink.latitude ? <a href='#'> {props.drink.locationDisplayName}</a> : props.drink.locationDisplayName}</h5>
                     {props.drink.latitude && <Map drink={props.drink} isVisible={showMap} setShowMap={setShowMap} />}
                 </div>
+
                 <div className='dropdown-div'>
                     <svg
                         onClick={dropdownFunction}
@@ -191,6 +202,9 @@ const Post = (props) => {
                         <p onClick={() => { props.handleDelete(props.drink) }}>Delete</p>
                     </div>
                 </div>
+
+                <Edit drink={props.drink} handleUpdate={props.handleUpdate} handleDelete={props.handleDelete}/>
+
             </div>
             <img className='post-image' src={props.drink.image} alt={props.drink.name} />
             <div className='post-info-container'>
@@ -221,8 +235,8 @@ const Post = (props) => {
                     showComments ?
                         <>
                             {commentsArray.map((comment, i) => {
-                                return (
-                                    (comment === 'placeholder') ?
+                                return(
+                                    (comment === 'Placeholder123') ?
                                         null
                                         :
                                         <div className='comment-container' key={i}>
