@@ -2,9 +2,12 @@
 // IMPORTS //
 /////////////
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { confirmAlert } from 'react-confirm-alert'
 import 'react-confirm-alert/src/react-confirm-alert.css';
+import GooglePlacesAutocomplete from "react-google-places-autocomplete";
+import { geocodeByPlaceId, getLatLng } from 'react-google-places-autocomplete';
+
 
 //////////////////
 // ADD FUNCTION //
@@ -13,13 +16,16 @@ import 'react-confirm-alert/src/react-confirm-alert.css';
 const Add = (props) => {
 
     // Variable Declaration
-    let emptyDrink = { 
+    let emptyDrink = {
         name: '',
         image: '',
         ingredients: '',
         comments: 'Placeholder123',
         likes: 0,
-        location: '',
+        locationDisplayName: '',
+        address: '',
+        latitude: 0.0,
+        longitude: 0.0,
         tags: ''
     };
 
@@ -27,6 +33,21 @@ const Add = (props) => {
     const [iconColor, setIconColor] = useState('black');
     const [showAlert, setShowAlert] = useState(false);
     const [drink, setDrink] = useState(emptyDrink);
+    const [value, setValue] = useState(null);
+
+    useEffect(() => {
+        console.log(value)
+
+        if (value) {
+            geocodeByPlaceId(value.value.place_id)
+            .then(results => getLatLng(results[0]))
+            .then(({ lat, lng }) => {
+                setDrink({ ...drink, locationDisplayName: value.value.structured_formatting.main_text, address: value.label, latitude: lat, longitude: lng })
+                console.log('Successfully got latitude and longitude', { lat, lng })
+            }
+            );
+        }
+    }, [value])
 
     // Set Icon to Color Black
     const setIconBlack = (event) => {
@@ -40,8 +61,9 @@ const Add = (props) => {
 
     // Function to Handle Change in Add Form
     const handleChange = (event) => {
-        setDrink({...drink, [event.target.name]: event.target.value});
+        setDrink({ ...drink, [event.target.name]: event.target.value });
     }
+
 
     // Function to Handle Submitting Add Form
     const handleAddFormSubmit = (event, onClose) => {
@@ -70,11 +92,11 @@ const Add = (props) => {
                             <h3>Create Drink Post</h3>
                             <button onClick={toggleCreateAlert} className='close-add-button'>
                                 <svg
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
                                 >
                                     <path
                                         d="M16.3956 7.75734C16.7862 8.14786 16.7862 8.78103 16.3956 9.17155L13.4142 12.153L16.0896 14.8284C16.4802 15.2189 16.4802 15.8521 16.0896 16.2426C15.6991 16.6331 15.0659 16.6331 14.6754 16.2426L12 13.5672L9.32458 16.2426C8.93405 16.6331 8.30089 16.6331 7.91036 16.2426C7.51984 15.8521 7.51984 15.2189 7.91036 14.8284L10.5858 12.153L7.60436 9.17155C7.21383 8.78103 7.21383 8.14786 7.60436 7.75734C7.99488 7.36681 8.62805 7.36681 9.01857 7.75734L12 10.7388L14.9814 7.75734C15.372 7.36681 16.0051 7.36681 16.3956 7.75734Z"
@@ -83,22 +105,26 @@ const Add = (props) => {
                                 </svg>
                             </button>
                         </div>
-                        <form className='add-form' onSubmit={handleAddFormSubmit}>
-                            <label htmlFor='name'>Name</label><br/>
-                            <input className='add-input' onChange={handleChange} type="text" name="name" placeholder='Example: Tequila Sunrise' /><br/>
-                            <label htmlFor='image'>Image URL</label><br/>
-                            <input className='add-input' onChange={handleChange} type="text" name="image" placeholder="Example: https://www.cocktails.com/images/media/drink.jpg" /><br/>
-                            <label htmlFor='ingredients'>Ingredients Separated by ", "</label><br/>
-                            <input className='add-input' onChange={handleChange} type="text" name="ingredients" placeholder='Example: Tequila, Orange Juice, Grenadine' /><br/>
-                            <label htmlFor='location'>Location</label><br/>
-                            <input className='add-input' onChange={handleChange} type="text" name="location" placeholder='Example: Philadelphia, PA' /><br/>
-                            <label htmlFor='tags'>Tags Separated by ", "</label><br/>
-                            <input className='add-input' onChange={handleChange} type="text" name="tags" placeholder='Example: tequila, sunrise, classic, delicious' /><br/>
-                            <input className='add-submit-button' value='Add Drink' type="submit"/>
+                        <form className='add-form' onSubmit={handleAddFormSubmit} >
+                            <label htmlFor='name'>Name</label><br />
+                            <input className='add-input' onChange={handleChange} type="text" name="name" placeholder='Example: Tequila Sunrise' /><br />
+                            <label htmlFor='image'>Image URL</label><br />
+                            <input className='add-input' onChange={handleChange} type="text" name="image" placeholder="Example: https://www.cocktails.com/images/media/drink.jpg" /><br />
+                            <label htmlFor='ingredients'>Ingredients Separated by ", "</label><br />
+                            <input className='add-input' onChange={handleChange} type="text" name="ingredients" placeholder='Example: Tequila, Orange Juice, Grenadine' /><br />
+                            <label htmlFor='location'>Location</label><br />
+                            <GooglePlacesAutocomplete
+                                selectProps={{
+                                    value,
+                                    onChange: setValue,
+                                }} />
+                            <label htmlFor='tags'>Tags Separated by ", "</label><br />
+                            <input className='add-input' onChange={handleChange} type="text" name="tags" placeholder='Example: tequila, sunrise, classic, delicious' /><br />
+                            <input className='add-submit-button' value='Add Drink' type="submit" />
                         </form>
                     </div>
                 </div>
-            :
+                :
                 null}
         </>
     )
