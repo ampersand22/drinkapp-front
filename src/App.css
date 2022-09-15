@@ -419,7 +419,9 @@ body {
 
 /* Map Modal */
 .exitMapModal {
-  float: right;
+  width: 24px;
+  align-self: flex-end;
+  margin-bottom: 3px;
 }
 
 
