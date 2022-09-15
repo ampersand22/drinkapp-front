@@ -1,8 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../App.css'
+import GooglePlacesAutocomplete from "react-google-places-autocomplete";
+import { geocodeByPlaceId, getLatLng } from 'react-google-places-autocomplete';
 const Edit = (props) => {
     const [drink, setDrink] = useState({...props.drink})
     const [editAlert, setEditAlert] = useState(false)
+    const [value, setValue] = useState(null);
+
+    useEffect(() => {
+        console.log(value)
+
+        if (value) {
+            geocodeByPlaceId(value.value.place_id)
+            .then(results => getLatLng(results[0]))
+            .then(({ lat, lng }) => {
+                setDrink({ ...drink, locationDisplayName: value.value.structured_formatting.main_text, address: value.label, latitude: lat, longitude: lng })
+                console.log('Successfully got latitude and longitude', { lat, lng })
+            }
+            );
+        }
+    }, [value])
 
     // spread is used to change state without reload
     const handleChange = (event) => {
@@ -128,8 +145,11 @@ const Edit = (props) => {
                             <input className='add-input' type="text" name="ingredients" value={drink.ingredients} onChange={handleChange}/>
                             <br />
                             <label htmlFor="location">Location: </label>
-                            <input className='add-input' type="text" name="location" value={drink.location} onChange={handleChange}/>
-                            <br />
+                            <GooglePlacesAutocomplete
+                                selectProps={{
+                                    value,
+                                    onChange: setValue,
+                                }} />
                             <label htmlFor="tags">Tags: </label>
                             <input className='add-input' type="text" name="tags" value={drink.tags} onChange={handleChange}/>
                             <br />
