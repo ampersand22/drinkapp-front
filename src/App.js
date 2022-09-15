@@ -58,7 +58,7 @@ const App = () => {
 
   // PUT Request and Update Drinks Comment State
   const handleUpdateComment = (editDrink) => {
-    axios.put('https://stark-sea-90395.herokuapp.com/api/drinks' + editDrink.id, editDrink)
+    axios.put('https://stark-sea-90395.herokuapp.com/api/drinks/' + editDrink.id, editDrink)
       .then((response) => {
         setDrinks(drinks.map((drink) => {
           return drink.id !== editDrink.id ? drink : editDrink
@@ -68,7 +68,7 @@ const App = () => {
 
   //PUT Request and Update Drinks State
   const handleUpdate = (editDrink) => {
-    axios.put('https://stark-sea-90395.herokuapp.com/api/drinks' + editDrink.id, editDrink)
+    axios.put('https://stark-sea-90395.herokuapp.com/api/drinks/' + editDrink.id, editDrink)
       .then((response) => {
         setDrinks(drinks.map((drink) => {
           return drink.id !== editDrink.id ? drink : editDrink
@@ -85,7 +85,7 @@ const App = () => {
         label: 'Yes',
         onClick: () => {
           axios
-            .delete('https://stark-sea-90395.herokuapp.com/api/drinks' + deletedDrink.id)
+            .delete('https://stark-sea-90395.herokuapp.com/api/drinks/' + deletedDrink.id)
             .then((response) => {
               setDrinks(drinks.filter(drinks => drinks.id !== deletedDrink.id))
             })
