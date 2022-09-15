@@ -412,6 +412,12 @@ body {
   margin: .55em 0;
 }
 
+/* Map Modal */
+.exitMapModal {
+  float: right;
+}
+
+
 /**********/
 /* Footer */
 /**********/
@@ -439,3 +445,4 @@ footer > h5:first-of-type {
 footer > h5 {
   transform: translate(-10px, 0px);
 }
+
