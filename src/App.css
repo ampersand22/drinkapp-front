@@ -418,10 +418,34 @@ body {
 }
 
 /* Map Modal */
+
 .exitMapModal {
   width: 24px;
+  height: 24px;
   align-self: flex-end;
   margin-bottom: 3px;
+  background-color: rgb(180, 180, 180);
+  color: white;
+  font-weight: 500;
+  font-size: 1em;
+  padding: 0;
+  border-style: none;
+  border-radius: 5px;
+  margin: .5em 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.ReactModal__Content {
+  padding-left: 1.5em !important;
+  padding-right: 1.5em !important;
+  padding-bottom: 1.5em !important;
+  margin: 0;
+  position: absolute !important;
+  top: 50% !important;
+  transform: translate(-50%, -50%) !important;
 }
 
 
@@ -461,3 +485,57 @@ footer > h5 {
   font-size: 50px;
 }
 
+/*****************/
+/* Media Queries */
+/*****************/
+
+/* For mobile phones and tablets: */
+@media only screen and (max-width: 920px) {
+  .post-container {
+    background-color: white;
+    width: 350px;
+    border-radius: 1em;
+    margin: 1em auto 2em auto;
+    box-shadow: 0px 0px 7px 1px rgba(0, 0, 0, 0.1);
+  }
+  
+  .post-header {
+    width: 100%;
+    height: 55px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .post-header > * {
+    padding: 0 1em;
+  }
+  
+  .location-p {
+    color: rgb(45, 45, 45);
+    font-size: .9em;
+    margin-left: .6em;
+  }
+  
+  .location-p > a {
+    color: rgb(2, 116, 187);
+    text-decoration: none;
+  }
+  
+  .post-location-container {
+    height: 55px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .clickable-svg {
+    cursor: pointer;
+  }
+  
+  .post-image {
+    width: 350px;
+    height: 350px;
+    overflow: hidden;
+    object-fit: cover;
+  }
+}
