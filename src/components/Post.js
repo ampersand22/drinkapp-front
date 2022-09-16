@@ -28,6 +28,8 @@ const Post = (props) => {
     // Make Comment Title Variable
     if (commentsArray.length === 1 && commentsArray[0] === 'Placeholder123') {
         commentsTitle = "View 0 Comments";
+    } else if (commentsArray.length > 1 && commentsArray[0] === 'Placeholder123') {
+        commentsTitle = 'View ' + (commentsArray.length - 1) + ' Comments';
     } else {
         commentsTitle = 'View ' + commentsArray.length + ' Comments';
     }

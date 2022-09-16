@@ -489,13 +489,17 @@ footer > h5 {
   font-weight: 400;
   font-size: 50px;
 }
+/* Spinner */
+.spinner {
+  text-align: center;
+}
 
 /*****************/
 /* Media Queries */
 /*****************/
 
 /* For mobile phones and tablets: */
-@media only screen and (max-width: 920px) {
+@media only screen and (max-width: 900px) {
   .post-container {
     background-color: white;
     width: 350px;
