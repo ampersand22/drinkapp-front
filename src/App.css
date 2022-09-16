@@ -439,6 +439,7 @@ body {
 }
 
 .ReactModal__Content {
+  width: 75% !important;
   padding-left: 1.5em !important;
   padding-right: 1.5em !important;
   padding-bottom: 1.5em !important;
@@ -446,6 +447,10 @@ body {
   position: absolute !important;
   top: 50% !important;
   transform: translate(-50%, -50%) !important;
+}
+
+.ReactModal__Content > div {
+  width: 100% !important;
 }
 
 
