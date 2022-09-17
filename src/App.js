@@ -22,7 +22,7 @@ import Footer from './components/Footer'
 
 const API_URL = process.env.REACT_APP_API_URL
 
-//////////////////
+//////////////////npm
 // APP FUNCTION //
 //////////////////
 
@@ -36,6 +36,7 @@ const App = () => {
   const [isFetchingDrinks, setIsFetchingDrinks] = useState(false);
   const [filteredDrinks, setFilteredDrinks] = useState([])
   const [isSearching, setIsSearching] = useState(false);
+  const [currentUser, setCurrentUser] = useState({})
 
   /////////////////////
   // AXIOS FUNCTIONS //
@@ -110,11 +111,11 @@ const App = () => {
   }
 
   const onSearchChange = (searchInput) => {
-    console.log("butternut:", searchInput);
+    const searchInputLower = searchInput.toLowerCase()
     if (searchInput.length > 0) {
       setIsSearching(true)
       const result = drinks.filter((drink) => {
-        return drink.name.toLowerCase().match(searchInput) || drink.ingredients.toLowerCase().match(searchInput) || drink.tags.toLowerCase().match(searchInput)
+        return drink.name.toLowerCase().match(searchInputLower) || drink.ingredients.toLowerCase().match(searchInputLower) || drink.tags.toLowerCase().match(searchInputLower)
       })
       setFilteredDrinks(result);
     } else {
@@ -141,8 +142,7 @@ const App = () => {
 
   return (
     <>
-      <Navbar handleCreate={handleCreate} onSearchChange={onSearchChange} />
-      <Login />
+      <Navbar handleCreate={handleCreate} onSearchChange={onSearchChange} currentUser={currentUser} setCurrentUser={setCurrentUser}  />
       <div className='posts-container'>
         {
           isFetchingDrinks ? <div className='spinner'>

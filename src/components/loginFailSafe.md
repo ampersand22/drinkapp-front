@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 
-const Login = (props) => {
+const Login2 = (props) => {
     const [toggleLogin, setToggleLogin] = useState(true)
     const [toggleError, setToggleError] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
@@ -21,7 +21,7 @@ const Login = (props) => {
         }
         setEmail('')
         setPassword('')
-        axios.post('https://stark-sea-90395.herokuapp.com/api/useraccount', userObj).then((response) => {
+        axios.post('http://localhost:8000/api/useraccount', userObj).then((response) => {
             if(response.data.email){
                 console.log(response);
                 setToggleError(false)
@@ -45,8 +45,10 @@ const Login = (props) => {
         }
         setEmail('')
         setPassword('')
-        axios.put(`https://stark-sea-90395.herokuapp.com/api/useraccount/{userid}`, userObj).then((response) => {
-            if(response.data.email){
+        axios.put(`http://localhost:8000/api/useraccount/login`, userObj)
+        .then((response) => {
+            // console.log('res', response);
+            if(response.data){
                 console.log(response);
                 setToggleError(false)
                 setErrorMessage('')
@@ -90,7 +92,6 @@ const Login = (props) => {
         <div className='overlay'>
             <div className="add-form-container">
                 <div className="add-form-header">
-                    <h3>Already Registered? Login Here:</h3>
                     <button onClick={props.toggleShowLogin} className='close-add-button'>
                                 <svg
                                 width="24"
@@ -107,30 +108,28 @@ const Login = (props) => {
                     </button>
                 </div>
                     <form onSubmit={handleLogin} className='add-form'>
-                        <label htmlFor="em">Email: </label>
-                        <input type='text' placeholder='Email' name='em' className='add-input' onChange={(event)=> {setEmail(event.target.value)}}/>
-                        <label htmlFor="pass">Password: </label>
-                        <input type='password' name='pass' placeholder='Password' className='add-input' onChange={(event)=> {setPassword(event.target.value)}}/>
+                        <label htmlFor="email">Email: </label>
+                        <input type='text' placeholder='email' className='add-input' onChange={(event)=> {setEmail(event.target.value)}}/>
+                        <label htmlFor="password">Password: </label>
+                        <input type='password' placeholder='password' className='add-input' onChange={(event)=> {setPassword(event.target.value)}}/>
                         {toggleError ?
                         <h5 className='errorMsg'>{errorMessage}</h5>
                         :
                         null
                         }
-                        <input type='submit' value='Login'  className='submitBtn btn btn-outline-primary add-submit-button'/>
+                        <input type='submit' value='Login'  className='submitBtn btn btn-outline-primary'/>
                     </form>
                     {/* New User Registers here */}
                     <h3>New User? Register Here:</h3>
                         <form onSubmit={handleCreateUser} className='add-form'>
-                        <label htmlFor="new-em">Email: </label>
-                        <input name='new-em' type='text' placeholder='Email' className='add-input' onChange={(event)=> {setEmail(event.target.value)}}/>
-                        <label htmlFor="new-pass">Password: </label>
-                        <input name='new-pass' type='password' placeholder='Password' className='add-input' onChange={(event)=> {setPassword(event.target.value)}}/>
+                        <input type='text' placeholder='email' className='add-input' onChange={(event)=> {setEmail(event.target.value)}}/>
+                        <input type='password' placeholder='password' className='add-input' onChange={(event)=> {setPassword(event.target.value)}}/>
                         {toggleError ?
                             <h5 className='errorMsg'>{errorMessage}</h5>
                             :
                             null
                         }
-                        <input type='submit' value='Register' className='submitBtn btn btn-outline-primary add-submit-button'/>
+                        <input type='submit' value='Register' className='submitBtn btn btn-outline-primary'/>
                     </form>
                 
             
@@ -142,4 +141,4 @@ const Login = (props) => {
         )
     }
     
-export default Login
+export default Login2
