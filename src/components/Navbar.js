@@ -15,21 +15,17 @@ const Navbar = (props) => {
     alert('You have logged out.')
    }
 
-  
-
   return (
     <div className='navbar'>
         <div className='logo'>
         <img src='/wastd-logo.png' height='40'/>
         </div>
-        <div>
-          <SearchBar onSearchChange={props.onSearchChange} />
-        </div>
+        <SearchBar onSearchChange={props.onSearchChange} />
         <div className='icons'>
         {props.currentUser.email ?
             <div className='login-parent'>
-              <p className="login">Logged in as <span style={{ color: 'blue' }}> {props.currentUser.email} </span></p>
-              <button className="login" onClick={handleLogout}>Logout</button>
+              <p className="login-p">Logged in as <span style={{ color: 'blue' }}> {props.currentUser.email} </span></p>
+              <button className="logout" onClick={handleLogout}>Logout</button>
               </div>
                 :
                 <p className="login" onClick={toggleShowLogin} style={{ cursor: 'pointer'}}>

@@ -143,7 +143,6 @@ const App = () => {
   return (
     <>
       <Navbar handleCreate={handleCreate} onSearchChange={onSearchChange} currentUser={currentUser} setCurrentUser={setCurrentUser}  />
-      <Login />
       <div className='posts-container'>
         {
           isFetchingDrinks ? <div className='spinner'>
