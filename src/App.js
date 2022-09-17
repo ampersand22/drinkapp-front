@@ -22,7 +22,7 @@ import Footer from './components/Footer'
 
 const API_URL = process.env.REACT_APP_API_URL
 
-//////////////////
+//////////////////npm
 // APP FUNCTION //
 //////////////////
 
@@ -36,6 +36,7 @@ const App = () => {
   const [isFetchingDrinks, setIsFetchingDrinks] = useState(false);
   const [filteredDrinks, setFilteredDrinks] = useState([])
   const [isSearching, setIsSearching] = useState(false);
+  const [currentUser, setCurrentUser] = useState({})
 
   /////////////////////
   // AXIOS FUNCTIONS //
@@ -141,7 +142,7 @@ const App = () => {
 
   return (
     <>
-      <Navbar handleCreate={handleCreate} onSearchChange={onSearchChange} />
+      <Navbar handleCreate={handleCreate} onSearchChange={onSearchChange} currentUser={currentUser} setCurrentUser={setCurrentUser}  />
       <Login />
       <div className='posts-container'>
         {
