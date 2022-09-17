@@ -21,7 +21,7 @@ const Login = (props) => {
         }
         setEmail('')
         setPassword('')
-        axios.post('http://localhost:8000/api/useraccount', userObj).then((response) => {
+        axios.post('https://stark-sea-90395.herokuapp.com/api/useraccount', userObj).then((response) => {
             if(response.data.email){
                 console.log(response);
                 setToggleError(false)
@@ -45,10 +45,8 @@ const Login = (props) => {
         }
         setEmail('')
         setPassword('')
-        axios.put(`http://localhost:8000/api/useraccount/login`, userObj)
-        .then((response) => {
-            // console.log('res', response);
-            if(response.data){
+        axios.put(`https://stark-sea-90395.herokuapp.com/api/useraccount/{userid}`, userObj).then((response) => {
+            if(response.data.email){
                 console.log(response);
                 setToggleError(false)
                 setErrorMessage('')

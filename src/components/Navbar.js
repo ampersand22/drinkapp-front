@@ -1,22 +1,9 @@
 import React, {useState} from 'react';
 import Add from './Add';
 import '../App.css';
-import SearchBar from './SearchBar'
-import Login from './Login'
-
+import SearchBar from './UpdatedSearchBar';
 
 const Navbar = (props) => {
-  const [showLogin, setShowLogin] = useState(false)
-  const [currentUser, setCurrentUser] = useState({})
-
-  const toggleShowLogin = (event) => {
-    setShowLogin(!showLogin)
-  }
-
-  const handleLogout = () => { 
-    props.setCurrentUser({})
-    alert('You have logged out.')
-   }
 
   
 
@@ -25,7 +12,9 @@ const Navbar = (props) => {
         <div className='logo'>
         <img src='/wastd-logo.png' height='40'/>
         </div>
-        <SearchBar />
+        <div>
+          <SearchBar onSearchChange={props.onSearchChange} />
+        </div>
         <div className='icons'>
         {props.currentUser.email ?
             <div className='login-parent'>
