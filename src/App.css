@@ -9,8 +9,10 @@
   background-color: rgb(255, 255, 255);
   top: 0;
   width: 100%;
+  height: 50px;
   position: fixed;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.1);
   z-index: 3;
@@ -19,11 +21,14 @@ h2{
   margin: 0;
 }
 .logo{
-  width: 50%;
+  width: 20%;
 }
-.icons{
-  width: 50%;
+.icons {
+  width: max-content;
   text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 .icons a{
   margin: 0 .75em;
@@ -31,6 +36,56 @@ h2{
 .icon-color path{
   color: rgb(0, 0, 0);
 }
+
+.login {
+  display: inline-block;
+  text-align: center;
+  margin: 0 1.5em 0 0;
+  font-size: .9em;
+  text-transform: uppercase;
+  background-color: rgb(199, 89, 205);
+  color: white;
+  padding: .5em .75em;
+  border-style: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login:hover {
+  background-color: rgb(189, 81, 195);
+}
+
+.login-parent {
+  height: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.logout {
+  display: inline-block;
+  text-align: center;
+  margin: 0 1.5em 0 0;
+  font-size: .8em;
+  text-transform: uppercase;
+  background-color: rgb(199, 89, 205);
+  color: white;
+  height: 30px;
+  padding: .5em .75em;
+  border-style: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.logout:hover {
+  background-color: rgb(189, 81, 195);
+}
+
+.login-p {
+  font-size: .95em;
+  white-space: nowrap;
+  margin: 0 .75em 0 1.5em;
+}
+
 /*****************/
 /*     Edit      */
 /*****************/
@@ -489,6 +544,12 @@ footer > h5 {
   font-weight: 400;
   font-size: 50px;
 }
+
+.searchBarContainer > input {
+  width: 175px;
+  margin-right: 1em;
+}
+
 /* Spinner */
 .spinner {
   text-align: center;
@@ -546,5 +607,25 @@ footer > h5 {
     height: 350px;
     overflow: hidden;
     object-fit: cover;
+  }
+
+  .login {
+    margin-right: .5em;  
+  }
+
+  .logout {
+    font-size: .5em;
+    height: 25px;
+    margin-right: .5em;  
+  }
+
+  .login-p {
+    font-size: 1.5vw;
+    white-space: normal;
+  }
+
+  .searchBarContainer > input {
+    width: 100px;
+    margin-right: 10px;
   }
 }
