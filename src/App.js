@@ -33,13 +33,10 @@ const App = () => {
   ////////////
 
   const [drinks, setDrinks] = useState([]);
-<<<<<<< HEAD
-  const [currentUser, setCurrentUser] = useState({})
-=======
   const [isFetchingDrinks, setIsFetchingDrinks] = useState(false);
   const [filteredDrinks, setFilteredDrinks] = useState([])
   const [isSearching, setIsSearching] = useState(false);
->>>>>>> 12a46895d8d153d1d84ecb971409ac9fb5658457
+  const [currentUser, setCurrentUser] = useState({})
 
   /////////////////////
   // AXIOS FUNCTIONS //
@@ -144,19 +141,8 @@ const App = () => {
   }, []);
 
   return (
-<<<<<<< HEAD
-    <div className="App">
-      <Navbar handleCreate={handleCreate} currentUser={currentUser} setCurrentUser={setCurrentUser} />
-      <div className='posts-container'>
-        {
-          drinks.map((drink) => {
-            return (
-              <Post drink={drink} handleUpdateComment={handleUpdateComment} handleUpdate={handleUpdate} handleDelete={handleDelete} key={drink.id} currentUser={currentUser} setCurrentUser={setCurrentUser} />
-            )
-          })
-=======
     <>
-      <Navbar handleCreate={handleCreate} onSearchChange={onSearchChange} />
+      <Navbar handleCreate={handleCreate} onSearchChange={onSearchChange} currentUser={currentUser} setCurrentUser={setCurrentUser}  />
       <Login />
       <div className='posts-container'>
         {
@@ -179,7 +165,6 @@ const App = () => {
                 )
               })
               : <NoSearchResults />
->>>>>>> 12a46895d8d153d1d84ecb971409ac9fb5658457
         }
       </div>
       <Footer />
