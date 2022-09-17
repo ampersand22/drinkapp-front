@@ -95,7 +95,6 @@ const Post = (props) => {
         const newDrink = {
             ...props.drink,
             comments: commentsArray.join(', '),
-
         }
         props.handleUpdateComment(newDrink);
     }

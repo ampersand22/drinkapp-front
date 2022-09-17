@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 
-const Login = (props) => {
+const Login2 = (props) => {
     const [toggleLogin, setToggleLogin] = useState(true)
     const [toggleError, setToggleError] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
@@ -21,7 +21,7 @@ const Login = (props) => {
         }
         setEmail('')
         setPassword('')
-        axios.post('https://stark-sea-90395.herokuapp.com/api/useraccount', userObj).then((response) => {
+        axios.post('http://localhost:8000/api/useraccount', userObj).then((response) => {
             if(response.data.email){
                 console.log(response);
                 setToggleError(false)
@@ -45,8 +45,10 @@ const Login = (props) => {
         }
         setEmail('')
         setPassword('')
-        axios.put(`https://stark-sea-90395.herokuapp.com/api/useraccount/{userid}`, userObj).then((response) => {
-            if(response.data.email){
+        axios.put(`http://localhost:8000/api/useraccount/login`, userObj)
+        .then((response) => {
+            // console.log('res', response);
+            if(response.data){
                 console.log(response);
                 setToggleError(false)
                 setErrorMessage('')
@@ -139,4 +141,4 @@ const Login = (props) => {
         )
     }
     
-export default Login
+export default Login2

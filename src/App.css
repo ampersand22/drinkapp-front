@@ -31,6 +31,12 @@ h2{
 .icon-color path{
   color: rgb(0, 0, 0);
 }
+
+.login {
+  display: inline-block;
+  text-align: center;
+  margin-right: 1.5em;
+}
 /*****************/
 /*     Edit      */
 /*****************/
