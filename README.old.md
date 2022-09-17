@@ -1,8 +1,8 @@
 # drinkapp-front
 
-Npm i css.gg
+Two databases were made in django, one with users and one with drinks.
+Sara and Lexi made the posts and search bar, while Alex and Jey made nav, login components.
 
-Put this in index.html <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+We put the main app together on Day 1 and started bug testing throughout the week.
 
-Put this in index.html  <link href='https://css.gg/css' rel='stylesheet'>
-
+Pip install bcrypt was used in Django to encrypt passwords.

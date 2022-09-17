@@ -53,7 +53,7 @@ const Post = (props) => {
                 comments: props.drink.comments,
                 likes: props.drink.likes -= 1,
                 location: props.drink.location,
-                tags: props.drink.tags
+                tags: props.drink.tags,
             }
             props.handleUpdateComment(newDrink);
         } else {
@@ -106,7 +106,7 @@ const Post = (props) => {
             comments: commentsArray.join(', '),
             likes: props.drink.likes,
             location: props.drink.location,
-            tags: props.drink.tags
+            tags: props.drink.tags,
         }
         props.handleUpdateComment(newDrink);
     }
@@ -175,13 +175,12 @@ const Post = (props) => {
                 <div className='dropdown-div'>
                 <svg
                 onClick={dropdownFunction}
-                className='clickable-svg'
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-                >
+                    className='clickable-svg'
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg">
                 <path
                     fillRule="evenodd"
                     clipRule="evenodd"
