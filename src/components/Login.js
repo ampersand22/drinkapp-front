@@ -45,8 +45,8 @@ const Login = (props) => {
         }
         setEmail('')
         setPassword('')
-        axios.put(`https://stark-sea-90395.herokuapp.com/api/useraccount/{userid}`, userObj).then((response) => {
-            if(response.data.email){
+        axios.put(`https://stark-sea-90395.herokuapp.com/api/useraccount/login`, userObj).then((response) => {
+            if(response.data){
                 console.log(response);
                 setToggleError(false)
                 setErrorMessage('')
